@@ -8,19 +8,18 @@
   <Version>1.0.1.0</Version>
   <ProviderName>Candle AI</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Candle Assistant"/>
+  <DisplayName DefaultValue="Candle AI Assistant"/>
   <Description DefaultValue="AI-powered email assistant for enhanced productivity"/>
   <IconUrl DefaultValue="https://candle-ai.github.io/FileServer/dist-outlook-addin/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://candle-ai.github.io/FileServer/dist-outlook-addin/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.trycandle.ai/contact"/>
   <AppDomains>
     <AppDomain>https://localhost:5174</AppDomain>
-    <AppDomain>https://localhost:3000</AppDomain>
     <AppDomain>https://us-east-1z03kdzmau.auth.us-east-1.amazoncognito.com</AppDomain>
     <AppDomain>https://cognito-idp.us-east-1.amazonaws.com</AppDomain>
     <AppDomain>https://bjqq0khodf.execute-api.us-east-1.amazonaws.com</AppDomain>
     <AppDomain>https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com</AppDomain>
-    <AppDomain>https://candle-ai.github.io/FileServer/</AppDomain>
+    <AppDomain>https://candle-ai.github.io</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
