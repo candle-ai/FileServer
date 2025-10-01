@@ -73,6 +73,7 @@
     // Environment detection and configuration
     function getEnvironmentConfig() {
       const hostname = window.location.hostname;
+      const path = window.location.pathname;
       const isLocal = hostname === 'localhost';
       
       if (isLocal) {
@@ -84,6 +85,26 @@
           REDIRECT_URI: 'https://localhost:5174/auth-dialog-pkce.html?callback=true',
           TOKEN_ENDPOINT: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
           USERINFO_ENDPOINT: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+        };
+      } else if (path.includes('FileServer_Staging')) {
+        // Staging environment (GitHub Pages)
+        return {
+          environment: 'staging',
+          COGNITO_DOMAIN: 'https://candle-565393026129-us-east-1.auth.us-east-1.amazoncognito.com',
+          CLIENT_ID: '22pj09tqppmia7sh207a3ufaq9',
+          REDIRECT_URI: 'https://candle-ai.github.io/FileServer_Staging/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
+          TOKEN_ENDPOINT: 'https://candle-565393026129-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
+          USERINFO_ENDPOINT: 'https://candle-565393026129-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+        };
+      } else if (path.includes('FileServer_Prod')) {
+        // Prod environment (GitHub Pages)
+        return {
+          environment: 'prod',
+          COGNITO_DOMAIN: 'https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com',
+          CLIENT_ID: '6s4fvuas12p625ssbstt48rpke',
+          REDIRECT_URI: 'https://candle-ai.github.io/FileServer_Prod/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
+          TOKEN_ENDPOINT: 'https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
+          USERINFO_ENDPOINT: 'https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
         };
       } else {
         // Dev environment (GitHub Pages)
