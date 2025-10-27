@@ -1,0 +1,111 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="emailGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EEF2FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0E7FF;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#818CF8;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#4F46E5;stop-opacity:0.3" />
+    </linearGradient>
+
+    <!-- Glow filter for AI sparkle -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Animations -->
+    <style>
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+
+      @keyframes sparkle {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.8; }
+      }
+
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .sparkle-animation {
+        animation: sparkle 2s ease-in-out infinite;
+      }
+
+      .pulse-animation {
+        animation: pulse 2s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Background glow circles -->
+  <circle cx="200" cy="150" r="120" fill="url(#glowGradient)" opacity="0.3" class="pulse-animation"/>
+  <circle cx="200" cy="150" r="80" fill="url(#glowGradient)" opacity="0.2" class="pulse-animation" style="animation-delay: 0.5s;"/>
+
+  <!-- Email document container -->
+  <g class="float-animation">
+    <!-- Email paper/document -->
+    <rect x="100" y="80" width="200" height="140" rx="8" fill="url(#emailGradient)" stroke="#6366F1" stroke-width="2"/>
+
+    <!-- Email lines (representing text) -->
+    <line x1="120" y1="110" x2="240" y2="110" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+    <line x1="120" y1="130" x2="260" y2="130" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+    <line x1="120" y1="150" x2="230" y2="150" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+    <line x1="120" y1="170" x2="250" y2="170" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+    <line x1="120" y1="190" x2="210" y2="190" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- AI Sparkle elements -->
+  <!-- Top left sparkle -->
+  <g class="sparkle-animation" style="animation-delay: 0s;">
+    <circle cx="80" cy="60" r="4" fill="#818CF8" filter="url(#glow)"/>
+    <path d="M 80 50 L 82 58 L 90 60 L 82 62 L 80 70 L 78 62 L 70 60 L 78 58 Z" fill="#818CF8" filter="url(#glow)"/>
+  </g>
+
+  <!-- Top right sparkle -->
+  <g class="sparkle-animation" style="animation-delay: 0.7s;">
+    <circle cx="320" cy="80" r="3" fill="#4F46E5" filter="url(#glow)"/>
+    <path d="M 320 72 L 321.5 78 L 328 80 L 321.5 82 L 320 88 L 318.5 82 L 312 80 L 318.5 78 Z" fill="#4F46E5" filter="url(#glow)"/>
+  </g>
+
+  <!-- Bottom right sparkle -->
+  <g class="sparkle-animation" style="animation-delay: 1.4s;">
+    <circle cx="310" cy="230" r="3.5" fill="#818CF8" filter="url(#glow)"/>
+    <path d="M 310 221 L 311.8 227.5 L 319 230 L 311.8 232.5 L 310 239 L 308.2 232.5 L 301 230 L 308.2 227.5 Z" fill="#818CF8" filter="url(#glow)"/>
+  </g>
+
+  <!-- Bottom left sparkle -->
+  <g class="sparkle-animation" style="animation-delay: 0.3s;">
+    <circle cx="90" cy="240" r="3" fill="#6366F1" filter="url(#glow)"/>
+    <path d="M 90 233 L 91.5 238 L 97 240 L 91.5 242 L 90 247 L 88.5 242 L 83 240 L 88.5 238 Z" fill="#6366F1" filter="url(#glow)"/>
+  </g>
+
+  <!-- Center magic sparkle (larger, more prominent) -->
+  <g class="sparkle-animation" style="animation-delay: 1s;">
+    <circle cx="320" cy="150" r="5" fill="#4F46E5" filter="url(#glow)"/>
+    <path d="M 320 138 L 323 147 L 333 150 L 323 153 L 320 162 L 317 153 L 307 150 L 317 147 Z" fill="#4F46E5" filter="url(#glow)"/>
+  </g>
+
+  <!-- Small orbiting dots around the email -->
+  <circle cx="85" cy="150" r="2.5" fill="#818CF8" opacity="0.6" class="sparkle-animation"/>
+  <circle cx="315" cy="200" r="2" fill="#6366F1" opacity="0.5" class="sparkle-animation" style="animation-delay: 0.5s;"/>
+  <circle cx="280" cy="70" r="2" fill="#4F46E5" opacity="0.6" class="sparkle-animation" style="animation-delay: 1s;"/>
+</svg>
