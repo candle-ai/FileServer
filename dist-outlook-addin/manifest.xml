@@ -5,7 +5,7 @@
             xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
             xsi:type="MailApp">
   <Id>22345678-1234-1234-1234-123456789013</Id>
-  <Version>1.0.85.0</Version>
+  <Version>1.0.86.0</Version>
   <ProviderName>Candle AI</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Candle AI Assistant - Dev"/>
