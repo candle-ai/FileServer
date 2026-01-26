@@ -193,15 +193,15 @@
 }/* Import base styles shared between themes */
 @font-face {
   font-family: 'Comfortaa';
-  src: url('/FileServer/dist/outlook-addin/fonts/Comfortaa-Regular.woff2') format('woff2'),
-       url('/FileServer/dist/outlook-addin/fonts/Comfortaa-Regular.woff') format('woff');
+  src: url('/FileServer/dist-outlook-addin/fonts/Comfortaa-Regular.woff2') format('woff2'),
+       url('/FileServer/dist-outlook-addin/fonts/Comfortaa-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Comfortaa';
-  src: url('/FileServer/dist/outlook-addin/fonts/Comfortaa-Bold.woff2') format('woff2'),
-       url('/FileServer/dist/outlook-addin/fonts/Comfortaa-Bold.woff') format('woff');
+  src: url('/FileServer/dist-outlook-addin/fonts/Comfortaa-Bold.woff2') format('woff2'),
+       url('/FileServer/dist-outlook-addin/fonts/Comfortaa-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
