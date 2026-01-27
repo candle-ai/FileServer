@@ -193,15 +193,15 @@
 }/* Import base styles shared between themes */
 @font-face {
   font-family: 'Comfortaa';
-  src: url('/FileServer/dist-outlook-addin/fonts/Comfortaa-Regular.woff2') format('woff2'),
-       url('/FileServer/dist-outlook-addin/fonts/Comfortaa-Regular.woff') format('woff');
+  src: url('/fonts/Comfortaa-Regular.woff2') format('woff2'),
+       url('/fonts/Comfortaa-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Comfortaa';
-  src: url('/FileServer/dist-outlook-addin/fonts/Comfortaa-Bold.woff2') format('woff2'),
-       url('/FileServer/dist-outlook-addin/fonts/Comfortaa-Bold.woff') format('woff');
+  src: url('/fonts/Comfortaa-Bold.woff2') format('woff2'),
+       url('/fonts/Comfortaa-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -1458,9 +1458,6 @@ video {
 }
 .min-w-0 {
   min-width: 0px;
-}
-.min-w-32 {
-  min-width: 8rem;
 }
 .min-w-\[16rem\] {
   min-width: 16rem;
