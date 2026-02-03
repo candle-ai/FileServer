@@ -1405,6 +1405,9 @@ video {
 .w-64 {
   width: 16rem;
 }
+.w-7 {
+  width: 1.75rem;
+}
 .w-72 {
   width: 18rem;
 }
