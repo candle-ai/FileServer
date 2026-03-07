@@ -77,7 +77,38 @@
       const isLocal = hostname === 'localhost';
       
       if (isLocal) {
-        // Local environment
+        // Check for env query param (initial dialog open) or sessionStorage (callback after redirect)
+        const urlParams = new URLSearchParams(window.location.search);
+        const envParam = urlParams.get('env') || sessionStorage.getItem('pkce_env');
+
+        // Persist env choice so it survives the Cognito redirect
+        if (envParam) sessionStorage.setItem('pkce_env', envParam);
+
+        if (envParam === 'dev2') {
+          // Dev2 local environment — uses dev2 AWS account (751821721024)
+          return {
+            environment: 'dev2-local',
+            COGNITO_DOMAIN: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com',
+            CLIENT_ID: '7iuhipiovk7d08esf8im7hr3ml',
+            REDIRECT_URI: 'https://localhost:5174/auth-dialog-pkce.html?callback=true',
+            TOKEN_ENDPOINT: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
+            USERINFO_ENDPOINT: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+          };
+        }
+
+        if (envParam === 'demo') {
+          // Demo local environment — uses demo AWS account (482624378498)
+          return {
+            environment: 'demo-local',
+            COGNITO_DOMAIN: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com',
+            CLIENT_ID: '580d2bi0qbpije4b55vflcsehg',
+            REDIRECT_URI: 'https://localhost:5174/auth-dialog-pkce.html?callback=true',
+            TOKEN_ENDPOINT: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
+            USERINFO_ENDPOINT: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+          };
+        }
+
+        // Default local environment — uses dev AWS account (663321693918)
         return {
           environment: 'local',
           COGNITO_DOMAIN: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com',
@@ -106,8 +137,28 @@
           TOKEN_ENDPOINT: 'https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
           USERINFO_ENDPOINT: 'https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
         };
+      } else if (path.includes('FileServer_Dev2')) {
+        // Dev2 environment (GitHub Pages) — uses dev2 AWS account (751821721024)
+        return {
+          environment: 'dev2',
+          COGNITO_DOMAIN: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com',
+          CLIENT_ID: '7iuhipiovk7d08esf8im7hr3ml',
+          REDIRECT_URI: 'https://candle-ai.github.io/FileServer_Dev2/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
+          TOKEN_ENDPOINT: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
+          USERINFO_ENDPOINT: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+        };
+      } else if (path.includes('FileServer_Demo')) {
+        // Demo environment (GitHub Pages) — uses demo AWS account (482624378498)
+        return {
+          environment: 'demo',
+          COGNITO_DOMAIN: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com',
+          CLIENT_ID: '580d2bi0qbpije4b55vflcsehg',
+          REDIRECT_URI: 'https://candle-ai.github.io/FileServer_Demo/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
+          TOKEN_ENDPOINT: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
+          USERINFO_ENDPOINT: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+        };
       } else {
-        // Dev environment (GitHub Pages)
+        // Dev environment (GitHub Pages) — default fallback
         return {
           environment: 'dev',
           COGNITO_DOMAIN: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com',
@@ -227,6 +278,7 @@
         sessionStorage.removeItem('pkce_verifier');
         sessionStorage.removeItem('pkce_state');
         sessionStorage.removeItem('pkce_environment');
+        sessionStorage.removeItem('pkce_env');
 
         console.log('Authentication successful');
         sendMessage({ 
