@@ -5,10 +5,10 @@
             xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
             xsi:type="MailApp">
   <Id>22345678-1234-1234-1234-123456789013</Id>
-  <Version>1.1.78.276</Version>
+  <Version>1.2.21.0</Version>
   <ProviderName>Candle AI</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Candle AI Assistant - Dev"/>
+  <DisplayName DefaultValue="Candle Legal Workspace - Dev"/>
   <Description DefaultValue="AI-powered email assistant for enhanced productivity"/>
   <IconUrl DefaultValue="https://candle-ai.github.io/FileServer/dist-outlook-addin/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://candle-ai.github.io/FileServer/dist-outlook-addin/assets/icon-128.png"/>
@@ -26,6 +26,11 @@
     <AppDomain>https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com</AppDomain>
     <AppDomain>https://candle-565393026129-us-east-1.auth.us-east-1.amazoncognito.com</AppDomain>
     <AppDomain>https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com</AppDomain>
+    <AppDomain>https://auth.trycandle.ai</AppDomain>
+    <AppDomain>https://auth.staging.trycandle.ai</AppDomain>
+    <AppDomain>https://auth.demo.trycandle.ai</AppDomain>
+    <AppDomain>https://auth.dev.trycandle.ai</AppDomain>
+    <AppDomain>https://auth.dev2.trycandle.ai</AppDomain>
     <AppDomain>https://candle-ai.github.io</AppDomain>
   </AppDomains>
   <Hosts>

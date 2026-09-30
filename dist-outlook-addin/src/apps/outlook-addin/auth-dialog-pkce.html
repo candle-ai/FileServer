@@ -58,7 +58,7 @@
   <div class="auth-container">
     <h2>Sign in to Candle</h2>
     <p>Please sign in to access your account.</p>
-    <button class="auth-button" onclick="startAuth()">Sign In</button>
+    <button class="auth-button" id="sign-in" onclick="startAuth()">Sign In</button>
     <div class="loading" id="loading">
       <p>Redirecting to sign in...</p>
     </div>
@@ -88,11 +88,11 @@
           // Dev2 local environment — uses dev2 AWS account (751821721024)
           return {
             environment: 'dev2-local',
-            COGNITO_DOMAIN: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com',
+            COGNITO_DOMAIN: 'https://auth.dev2.trycandle.ai',
             CLIENT_ID: '7iuhipiovk7d08esf8im7hr3ml',
             REDIRECT_URI: 'https://localhost:5174/auth-dialog-pkce.html?callback=true',
-            TOKEN_ENDPOINT: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
-            USERINFO_ENDPOINT: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+            TOKEN_ENDPOINT: 'https://auth.dev2.trycandle.ai/oauth2/token',
+            USERINFO_ENDPOINT: 'https://auth.dev2.trycandle.ai/oauth2/userInfo'
           };
         }
 
@@ -100,72 +100,72 @@
           // Demo local environment — uses demo AWS account (482624378498)
           return {
             environment: 'demo-local',
-            COGNITO_DOMAIN: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com',
+            COGNITO_DOMAIN: 'https://auth.demo.trycandle.ai',
             CLIENT_ID: '580d2bi0qbpije4b55vflcsehg',
             REDIRECT_URI: 'https://localhost:5174/auth-dialog-pkce.html?callback=true',
-            TOKEN_ENDPOINT: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
-            USERINFO_ENDPOINT: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+            TOKEN_ENDPOINT: 'https://auth.demo.trycandle.ai/oauth2/token',
+            USERINFO_ENDPOINT: 'https://auth.demo.trycandle.ai/oauth2/userInfo'
           };
         }
 
         // Default local environment — uses dev AWS account (663321693918)
         return {
           environment: 'local',
-          COGNITO_DOMAIN: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com',
+          COGNITO_DOMAIN: 'https://auth.dev.trycandle.ai',
           CLIENT_ID: '4hoar9e471p1vtkiaavocfgkdt',
           REDIRECT_URI: 'https://localhost:5174/auth-dialog-pkce.html?callback=true',
-          TOKEN_ENDPOINT: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
-          USERINFO_ENDPOINT: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+          TOKEN_ENDPOINT: 'https://auth.dev.trycandle.ai/oauth2/token',
+          USERINFO_ENDPOINT: 'https://auth.dev.trycandle.ai/oauth2/userInfo'
         };
       } else if (path.includes('FileServer_Staging')) {
         // Staging environment (GitHub Pages)
         return {
           environment: 'staging',
-          COGNITO_DOMAIN: 'https://candle-565393026129-us-east-1.auth.us-east-1.amazoncognito.com',
+          COGNITO_DOMAIN: 'https://auth.staging.trycandle.ai',
           CLIENT_ID: '22pj09tqppmia7sh207a3ufaq9',
           REDIRECT_URI: 'https://candle-ai.github.io/FileServer_Staging/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
-          TOKEN_ENDPOINT: 'https://candle-565393026129-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
-          USERINFO_ENDPOINT: 'https://candle-565393026129-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+          TOKEN_ENDPOINT: 'https://auth.staging.trycandle.ai/oauth2/token',
+          USERINFO_ENDPOINT: 'https://auth.staging.trycandle.ai/oauth2/userInfo'
         };
       } else if (path.includes('FileServer_Prod')) {
         // Prod environment (GitHub Pages)
         return {
           environment: 'prod',
-          COGNITO_DOMAIN: 'https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com',
+          COGNITO_DOMAIN: 'https://auth.trycandle.ai',
           CLIENT_ID: '6s4fvuas12p625ssbstt48rpke',
           REDIRECT_URI: 'https://candle-ai.github.io/FileServer_Prod/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
-          TOKEN_ENDPOINT: 'https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
-          USERINFO_ENDPOINT: 'https://candle-448049808205-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+          TOKEN_ENDPOINT: 'https://auth.trycandle.ai/oauth2/token',
+          USERINFO_ENDPOINT: 'https://auth.trycandle.ai/oauth2/userInfo'
         };
       } else if (path.includes('FileServer_Dev2')) {
         // Dev2 environment (GitHub Pages) — uses dev2 AWS account (751821721024)
         return {
           environment: 'dev2',
-          COGNITO_DOMAIN: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com',
+          COGNITO_DOMAIN: 'https://auth.dev2.trycandle.ai',
           CLIENT_ID: '7iuhipiovk7d08esf8im7hr3ml',
           REDIRECT_URI: 'https://candle-ai.github.io/FileServer_Dev2/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
-          TOKEN_ENDPOINT: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
-          USERINFO_ENDPOINT: 'https://candle-751821721024-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+          TOKEN_ENDPOINT: 'https://auth.dev2.trycandle.ai/oauth2/token',
+          USERINFO_ENDPOINT: 'https://auth.dev2.trycandle.ai/oauth2/userInfo'
         };
       } else if (path.includes('FileServer_Demo')) {
         // Demo environment (GitHub Pages) — uses demo AWS account (482624378498)
         return {
           environment: 'demo',
-          COGNITO_DOMAIN: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com',
+          COGNITO_DOMAIN: 'https://auth.demo.trycandle.ai',
           CLIENT_ID: '580d2bi0qbpije4b55vflcsehg',
           REDIRECT_URI: 'https://candle-ai.github.io/FileServer_Demo/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
-          TOKEN_ENDPOINT: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
-          USERINFO_ENDPOINT: 'https://candle-482624378498-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+          TOKEN_ENDPOINT: 'https://auth.demo.trycandle.ai/oauth2/token',
+          USERINFO_ENDPOINT: 'https://auth.demo.trycandle.ai/oauth2/userInfo'
         };
       } else {
         // Dev environment (GitHub Pages) — default fallback
         return {
           environment: 'dev',
-          COGNITO_DOMAIN: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com',
+          COGNITO_DOMAIN: 'https://auth.dev.trycandle.ai',
           CLIENT_ID: '4hoar9e471p1vtkiaavocfgkdt',
           REDIRECT_URI: 'https://candle-ai.github.io/FileServer/dist-outlook-addin/src/apps/outlook-addin/auth-dialog-pkce.html?callback=true',
-          TOKEN_ENDPOINT: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/token',
-          USERINFO_ENDPOINT: 'https://candle-663321693918-us-east-1.auth.us-east-1.amazoncognito.com/oauth2/userInfo'
+          TOKEN_ENDPOINT: 'https://auth.dev.trycandle.ai/oauth2/token',
+          USERINFO_ENDPOINT: 'https://auth.dev.trycandle.ai/oauth2/userInfo'
         };
       }
     }
@@ -195,13 +195,87 @@
       return generateCodeVerifier(); // Use same function for state
     }
 
+    // ---- Outlook on the web: handoff mode ---------------------------------
+    // On the web the taskpane owns the sign-in: it holds the PKCE verifier,
+    // hands this page a ready-made authorize URL, and polls the API for the
+    // code that Cognito parks there. Office requires the dialog's first page to
+    // be on the add-in's own domain, which is the only reason this page loads
+    // at all in that mode; its one job is to send the dialog window straight
+    // on to Cognito, with no click and no second window. Cognito's COOP header
+    // will sever Office's handle on this window a few seconds later and Office
+    // will report the dialog as closed; the taskpane knows to ignore that on
+    // the web, and the API callback page closes the window when sign-in ends.
+    //
+    // The page redirects to whatever it is handed, it is publicly hosted, and
+    // it redirects before Office is involved, so in a plain browser it would be
+    // an open redirector. It therefore accepts exactly one destination: the
+    // Cognito origin this environment signs in with (CONFIG.COGNITO_DOMAIN,
+    // the same value the taskpane builds the authorize URL from). Not another
+    // AWS customer's Cognito host, not another Candle environment's, not
+    // another Candle subdomain.
+    function isHandoffMode(search) {
+      return new URLSearchParams(search).get('mode') === 'handoff';
+    }
+
+    function getHandoffAuthorizeUrl(search) {
+      var params = new URLSearchParams(search);
+      if (params.get('mode') !== 'handoff') return null;
+      var raw = params.get('authorize');
+      if (!raw) return null;
+      var url;
+      try {
+        url = new URL(raw);
+      } catch (e) {
+        return null;
+      }
+      var expectedOrigin;
+      try {
+        expectedOrigin = new URL(CONFIG.COGNITO_DOMAIN).origin;
+      } catch (e) {
+        return null;
+      }
+      if (url.protocol !== 'https:' || url.origin !== expectedOrigin) return null;
+      return url.toString();
+    }
+
+    // The one seam through which this page navigates, so tests can observe it.
+    function redirectToSignIn(authorizeUrl) {
+      window.location.replace(authorizeUrl);
+    }
+
+    // Returns true when the page is in handoff mode (whether or not the
+    // redirect happened), so the caller knows the desktop flow does not apply.
+    function startHandoffIfRequested() {
+      if (!isHandoffMode(window.location.search)) return false;
+      var authorizeUrl = getHandoffAuthorizeUrl(window.location.search);
+      if (!authorizeUrl) {
+        console.error('Handoff mode with a missing or untrusted authorize URL');
+        showError('This sign-in link is not valid. Close this window and try again from Candle.');
+        return true;
+      }
+      console.log('Handoff mode: sending the dialog to Cognito...');
+      showLoading();
+      redirectToSignIn(authorizeUrl);
+      return true;
+    }
+
     // Initialize configuration
     const CONFIG = getEnvironmentConfig();
-    
+
     // Display environment info
     document.getElementById('env-info').textContent = `Environment: ${CONFIG.environment}`;
 
+    // Outlook on the web: leave for Cognito immediately. Everything below this
+    // point is the desktop in-dialog flow.
+    var IN_HANDOFF_MODE = startHandoffIfRequested();
+
     async function startAuth() {
+      if (IN_HANDOFF_MODE) {
+        // Try Again after a refused URL simply re-runs the handoff check.
+        startHandoffIfRequested();
+        return;
+      }
+
       console.log(`Starting PKCE authentication in ${CONFIG.environment} environment...`);
       showLoading();
 
@@ -245,15 +319,24 @@
       const error = urlParams.get('error');
       const errorDescription = urlParams.get('error_description');
 
-      if (error) {
+      if (error || errorDescription) {
+        // A refusal from a Cognito trigger (address not added to Candle, wrong
+        // sign-in method) lands here as error_description, written as
+        // "PreSignUp failed with error <sentence>." Show the sentence and hand
+        // it to the taskpane, which closes this dialog and shows it in the
+        // panel. Mirrors cleanCognitoErrorDescription in
+        // src/platforms/helpers/authErrors.ts.
         console.error('OAuth error:', error, errorDescription);
-        showError(`Authentication failed: ${error}${errorDescription ? ' - ' + errorDescription : ''}`);
+        const message = readableSignInError(errorDescription, error);
+        showError(message);
+        sendMessage({ type: 'AUTH_ERROR', error: message });
         return;
       }
 
       if (!code) {
         console.error('No authorization code received');
-        showError('No authorization code received from authentication provider');
+        showError(SIGN_IN_FAILED_MESSAGE);
+        sendMessage({ type: 'AUTH_ERROR', error: SIGN_IN_FAILED_MESSAGE });
         return;
       }
 
@@ -347,6 +430,28 @@
       };
     }
 
+    const SIGN_IN_FAILED_MESSAGE = 'Sign-in could not be completed. Please try again. If this keeps happening, contact your admin or the Candle team.';
+
+    function readableSignInError(description, errorCode) {
+      const text = (description || '')
+        // Cognito wraps the trigger sentence twice: the API layer adds
+        // "<Trigger> failed with error ", and managed login renders that
+        // behind "Invalid input: ". Match any lead-in up to the first
+        // "failed with error" so both forms are stripped. Kept identical to
+        // TRIGGER_PREFIX in src/platforms/helpers/authErrors.ts and to the
+        // inline copy in apps/options/public/oauth-callback.html.
+        .replace(/^\s*(?:[^:]{0,80}:\s*)?[A-Za-z_]+ failed with error[:\s]*/i, '')
+        .trim()
+        .replace(/\.{2,}$/, '.');
+      if (text) {
+        return text;
+      }
+      if (errorCode === 'access_denied') {
+        return 'The sign-in window was closed before sign-in finished. Try again when you are ready.';
+      }
+      return SIGN_IN_FAILED_MESSAGE;
+    }
+
     function sendMessage(message) {
       console.log('Sending message:', { ...message, tokens: message.tokens ? '[REDACTED]' : undefined });
       
@@ -375,13 +480,13 @@
     }
 
     function showLoading() {
-      document.querySelector('.auth-button').style.display = 'none';
+      document.getElementById('sign-in').style.display = 'none';
       document.getElementById('loading').style.display = 'block';
       document.getElementById('error').style.display = 'none';
     }
 
     function showError(message) {
-      document.querySelector('.auth-button').style.display = 'none';
+      document.getElementById('sign-in').style.display = 'none';
       document.getElementById('loading').style.display = 'none';
       document.getElementById('error').style.display = 'block';
       document.getElementById('error-message').textContent = message;
@@ -390,7 +495,8 @@
     // Initialize when Office is ready
     Office.onReady(() => {
       console.log(`Office ready in auth dialog (${CONFIG.environment} environment)`);
-      
+      if (IN_HANDOFF_MODE) return;
+
       // Check if this is a callback
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('callback') === 'true') {
