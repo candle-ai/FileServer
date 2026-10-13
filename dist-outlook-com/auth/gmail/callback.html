@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Connecting to Candle</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <style>
+      body { font-family: "Segoe UI", system-ui, sans-serif; margin: 2rem; color: #222; }
+      .detail { color: #666; font-size: 0.85rem; margin-top: 0.75rem; }
+    </style>
+  </head>
+  <body>
+    <p id="status">Connecting...</p>
+    <p id="detail" class="detail"></p>
+    <script>
+      // Both legs of a provider OAuth connect (Clio, Gmail) run through this
+      // page, because Office requires the dialog's first page to be on the
+      // add-in's own domain and establishes the dialog context there.
+      //
+      //   leg 1  ?start=<provider authorize URL>  -> forward to the provider
+      //   leg 2  ?code=... / ?error=...           -> messageParent to the taskpane
+      //
+      // The taskpane opens leg 1 and waits on DialogMessageReceived.
+      //
+      // Connecting the user's own Outlook mailbox uses leg 1 only. It forwards
+      // to Candle's own /oauth/login/outlook, which drives the Microsoft sign-in
+      // and writes the registration server-side, so nothing comes back here to
+      // message; the taskpane re-checks registration instead.
+
+      // Leg 1 redirects before Office is involved, so in a plain browser this
+      // page would otherwise be an open redirector. It forwards to exactly the
+      // provider sign-in origins Candle uses, plus Candle's own API hosts, and
+      // nothing else. Same guard as getHandoffAuthorizeUrl in
+      // auth-dialog-pkce.html.
+      var ALLOWED_START_ORIGINS = [
+        'https://app.clio.com',
+        'https://eu.app.clio.com',
+        'https://ca.app.clio.com',
+        'https://accounts.google.com',
+        // The Work agent's own Outlook mailbox connect. Entra always authorizes
+        // on this one host regardless of tenant, because the app is registered
+        // against /common. Without it leg 1 refuses its own provider and the
+        // user sees "This connection link is not valid".
+        'https://login.microsoftonline.com',
+        'https://api.trycandle.ai',
+        'https://api.staging.trycandle.ai',
+        'https://api.demo.trycandle.ai',
+        'https://api.dev.trycandle.ai',
+        'https://api.dev2.trycandle.ai'
+      ];
+
+      function show(text, detail) {
+        document.getElementById('status').textContent = text;
+        document.getElementById('detail').textContent = detail || '';
+      }
+
+      function safeStartUrl(raw) {
+        if (!raw) return null;
+        var url;
+        try {
+          url = new URL(raw);
+        } catch (e) {
+          return null;
+        }
+        if (url.protocol !== 'https:') return null;
+        if (ALLOWED_START_ORIGINS.indexOf(url.origin) === -1) return null;
+        return url.toString();
+      }
+
+      function run() {
+        var params = new URLSearchParams(window.location.search);
+        var start = params.get('start');
+
+        if (start) {
+          var target = safeStartUrl(start);
+          if (!target) {
+            show(
+              'This connection link is not valid.',
+              'Close this window and start the connection again from Candle.'
+            );
+            return;
+          }
+          show('Taking you to sign in...');
+          window.location.replace(target);
+          return;
+        }
+
+        var error = params.get('error');
+        var code = params.get('code');
+        if (!error && !code) {
+          show(
+            'Nothing to finish here.',
+            'Close this window and start the connection from Candle.'
+          );
+          return;
+        }
+
+        // Hand the taskpane the whole URL and let it read the code out. If this
+        // page is not running as an Office dialog there is no parent to message,
+        // but the taskpane's window.open fallback reads the same URL by polling,
+        // so this is not necessarily a failure and must not be reported as one.
+        try {
+          Office.context.ui.messageParent(window.location.href);
+          show(error ? 'Returning to Candle...' : 'Connected.', 'You can close this window.');
+        } catch (err) {
+          show(
+            error ? 'Returning to Candle...' : 'Connected.',
+            'You can close this window. (' + (err && err.message ? err.message : 'no dialog channel') + ')'
+          );
+        }
+      }
+
+      var started = false;
+      function runOnce() {
+        if (started) return;
+        started = true;
+        run();
+      }
+
+      if (typeof Office !== 'undefined' && Office.onReady) {
+        // Waiting for Office matters on leg 1: the dialog context has to be
+        // established on this origin before we navigate away, or messageParent
+        // has nothing to reach when the provider redirects back.
+        Office.onReady(runOnce);
+        // Office.onReady does not always settle outside an Office host, and the
+        // window.open fallback opens this same page in a plain popup. Carry on
+        // rather than leaving the user on "Connecting..." forever.
+        setTimeout(runOnce, 3000);
+      } else {
+        runOnce();
+      }
+    </script>
+  </body>
+</html>
