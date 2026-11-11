@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Placeholder mark until Mitratech provides CaseCloud brand assets. -->
+  <rect width="100" height="100" fill="#123a7a" rx="16"/>
+  <path fill="white" d="M31 70a15 15 0 0 1-1.6-29.9A20 20 0 0 1 68.2 37 16.5 16.5 0 0 1 69 70Z"/>
+  <text x="50" y="62.5" font-family="Arial, sans-serif" font-size="19" font-weight="bold" fill="#123a7a" text-anchor="middle">CC</text>
+</svg>
