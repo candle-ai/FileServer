@@ -5,7 +5,7 @@
             xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
             xsi:type="MailApp">
   <Id>22345678-1234-1234-1234-123456789013</Id>
-  <Version>1.3.11.9001</Version>
+  <Version>1.3.14.0</Version>
   <ProviderName>Candle AI</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Candle Legal Workspace - Dev"/>
@@ -119,7 +119,7 @@
               </OfficeTab>
             </ExtensionPoint>
 
-            <!-- Calendar events: link a CaseCloud matter and contacts (calendar sync). -->
+            <!-- Calendar events: link a matter and contacts (calendar sync). -->
             <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
               <OfficeTab id="TabDefault">
                 <Group id="apptOrganizerGroup">
@@ -137,7 +137,6 @@
                     </Icon>
                     <Action xsi:type="ShowTaskpane">
                       <SourceLocation resid="Taskpane.Url"/>
-                      <SupportsPinning>true</SupportsPinning>
                     </Action>
                   </Control>
                 </Group>
@@ -161,7 +160,6 @@
                     </Icon>
                     <Action xsi:type="ShowTaskpane">
                       <SourceLocation resid="Taskpane.Url"/>
-                      <SupportsPinning>true</SupportsPinning>
                     </Action>
                   </Control>
                 </Group>
@@ -189,7 +187,7 @@
         </bt:ShortStrings>
         <bt:LongStrings>
           <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open the CandleAI email assistant"/>
-          <bt:String id="EventButton.Tooltip" DefaultValue="Link this event to a CaseCloud matter and contacts"/>
+          <bt:String id="EventButton.Tooltip" DefaultValue="Link this event to a matter and contacts"/>
         </bt:LongStrings>
       </Resources>
     </VersionOverrides>
